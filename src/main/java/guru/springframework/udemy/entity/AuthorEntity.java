@@ -22,7 +22,7 @@ public class AuthorEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String firsname;
+	private String firstname;
 	private String lastname;
 	
 	@ManyToMany(mappedBy = "authors")
@@ -33,9 +33,9 @@ public class AuthorEntity {
 		super();
 	}
 
-	public AuthorEntity(String firsname, String lastname) {
+	public AuthorEntity(String firstname, String lastname) {
 		super();
-		this.firsname = firsname;
+		this.firstname = firstname;
 		this.lastname = lastname;
 	}
 
@@ -47,12 +47,12 @@ public class AuthorEntity {
 		this.id = id;
 	}
 
-	public String getFirsname() {
-		return firsname;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirsname(String firsname) {
-		this.firsname = firsname;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getLastname() {
@@ -98,7 +98,7 @@ public class AuthorEntity {
 
 	@Override
 	public String toString() {
-		return "AuthorEntity [id=" + id + ", firsname=" + firsname + ", lastname=" + lastname + "]";
+		return "AuthorEntity [id=" + id + ", firsname=" + firstname + ", lastname=" + lastname + "]";
 	}
 	
 	

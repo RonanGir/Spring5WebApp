@@ -26,7 +26,7 @@ public class PublisherEntity {
 	private String zip;
 	
 	@OneToMany
-	@JoinColumn(name = "publisher")
+	@JoinColumn(name = "publisher_id")
 	private Set<BookEntity> books = new HashSet<>();
 	
 	public PublisherEntity() {

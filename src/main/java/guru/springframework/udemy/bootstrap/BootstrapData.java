@@ -31,7 +31,9 @@ public class BootstrapData implements CommandLineRunner {
 		AuthorEntity marcel =  new AuthorEntity("Marcel", "Proust");
 		BookEntity leTempsPerdu = new BookEntity("Le temps perdu", "MP123"); 
 		BookEntity leTempsRetrouve = new BookEntity("Le temps retrouvé", "MP456");
+		
 		PublisherEntity gallimard = new PublisherEntity("Gallimard" ,"5 Rue Gaston Gallimard","Paris", "France", "75007");
+		publisherRepo.save(gallimard);
 		
 		marcel.getBooks().add(leTempsPerdu);
 		marcel.getBooks().add(leTempsRetrouve);
@@ -41,13 +43,16 @@ public class BootstrapData implements CommandLineRunner {
 		
 		gallimard.getBooks().add(leTempsPerdu);
 		gallimard.getBooks().add(leTempsRetrouve);
+		
+		leTempsPerdu.setPublisher(gallimard);
+		leTempsRetrouve.setPublisher(gallimard);
 			
 		authorRepo.save(marcel);
 		bookRepo.save(leTempsPerdu);
 		bookRepo.save(leTempsRetrouve);
 		publisherRepo.save(gallimard);
 		
-		log.info("I've registered : " + bookRepo.count() + " books wrote by " + marcel.getFirsname() + " " + marcel.getLastname());
+		log.info("I've registered : " + bookRepo.count() + " books wrote by " + marcel.getFirstname() + " " + marcel.getLastname());
 		log.info("The Publisher " + gallimard.getName() +  " has " + gallimard.getBooks().size() + " books in his collection" );
 		
 		log.info("Books in db: " + bookRepo.count());
