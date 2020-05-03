@@ -38,13 +38,21 @@ public class BootstrapData implements CommandLineRunner {
 			
 		leTempsPerdu.getAuthors().add(marcel);
 		leTempsRetrouve.getAuthors().add(marcel);
+		
+		gallimard.getBooks().add(leTempsPerdu);
+		gallimard.getBooks().add(leTempsRetrouve);
 			
 		authorRepo.save(marcel);
 		bookRepo.save(leTempsPerdu);
 		bookRepo.save(leTempsRetrouve);
+		publisherRepo.save(gallimard);
 		
 		log.info("I've registered : " + bookRepo.count() + " books wrote by " + marcel.getFirsname() + " " + marcel.getLastname());
-		log.info("The Publisher name is " + gallimard.getName());
+		log.info("The Publisher " + gallimard.getName() +  " has " + gallimard.getBooks().size() + " books in his collection" );
+		
+		log.info("Books in db: " + bookRepo.count());
+		log.info("Author in db: " + authorRepo.count());
+		log.info("Publisher in db: " + publisherRepo.count());
 	}
 } 
 	

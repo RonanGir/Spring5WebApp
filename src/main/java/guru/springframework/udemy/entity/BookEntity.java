@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class BookEntity {
@@ -29,6 +30,8 @@ public class BookEntity {
 //	)
 	private Set<AuthorEntity> authors = new HashSet<>();
 	
+	@ManyToOne
+	private PublisherEntity publisher;
 
 	public BookEntity() {
 		super();
@@ -70,6 +73,15 @@ public class BookEntity {
 
 	public void setAuthors(Set<AuthorEntity> authors) {
 		this.authors = authors;
+	}
+	
+
+	public PublisherEntity getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(PublisherEntity publisher) {
+		this.publisher = publisher;
 	}
 
 	@Override
